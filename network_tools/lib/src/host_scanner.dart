@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:dart_ping/dart_ping.dart';
+import 'package:dart_ping_ios/dart_ping_ios.dart';
 import 'package:network_tools/src/models/active_host.dart';
 import 'package:network_tools/src/models/callbacks.dart';
 import 'package:network_tools/src/port_scanner.dart';
@@ -100,6 +102,10 @@ class HostScanner {
     ProgressCallback? progressCallback,
     bool resultsInAddressAscendingOrder = true,
   }) async* {
+    if (Platform.isIOS) {
+      DartPingIOS.register();
+    }
+
     final int maxEnd = getMaxHost(subnet);
     if (firstHostId > lastHostId ||
         firstHostId < 1 ||
