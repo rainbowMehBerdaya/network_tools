@@ -1,7 +1,7 @@
 import 'package:dart_ping/dart_ping.dart';
 import 'package:network_tools/src/models/mdns_info.dart';
 import 'package:network_tools/src/models/open_port.dart';
-import 'package:network_tools/src/netowrk_tools_utils.dart';
+import 'package:network_tools/src/network_tools_utils.dart';
 import 'package:universal_io/io.dart';
 
 /// ActiveHost which implements comparable
@@ -9,6 +9,7 @@ import 'package:universal_io/io.dart';
 class ActiveHost extends Comparable<ActiveHost> {
   ActiveHost({
     required this.internetAddress,
+    // ignore: deprecated_consistency
     this.openPort = const [],
     PingData? pingData,
     MdnsInfo? mdnsInfoVar,
@@ -80,7 +81,10 @@ class ActiveHost extends Comparable<ActiveHost> {
   late Future<MdnsInfo?> mdnsInfo;
 
   /// List of all the open port of this device
+  @Deprecated("Grammar is wrong for variable, please use [openPorts]")
   List<OpenPort> openPort;
+
+  List<OpenPort> get openPorts => openPort;
 
   /// This device name does not following any guideline and is just some name
   /// that we can show for the device.
@@ -97,7 +101,7 @@ class ActiveHost extends Comparable<ActiveHost> {
   int get hashCode => address.hashCode;
 
   @override
-  bool operator ==(dynamic o) => o is ActiveHost && address == o.address;
+  bool operator ==(Object o) => o is ActiveHost && address == o.address;
 
   @override
   int compareTo(ActiveHost other) {
@@ -106,7 +110,7 @@ class ActiveHost extends Comparable<ActiveHost> {
 
   @override
   String toString() {
-    return 'Address: $address, HostId: $hostId, Time: ${responseTime?.inMilliseconds}ms';
+    return 'Address: $address, HostId: $hostId, Time: ${responseTime?.inMilliseconds}ms, port: ${openPorts.join(",")}';
   }
 
   Future<String> toStringFull() async {

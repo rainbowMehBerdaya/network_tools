@@ -1,6 +1,6 @@
 name: network_tools
 description: Networking Tools library which can help you discover open ports, devices on subnet and many other things. 
-version: 3.1.0
+version: 3.2.1
 issue_tracker: https://github.com/osociety/network_tools/issues
 repository: https://github.com/osociety/network_tools/tree/main/network_tools
 
@@ -14,6 +14,8 @@ dependencies:
   dart_ping_ios: ^3.0.0
   # Deal with internationalized/localized messages and more.
   intl: ^0.18.0
+  # Easy to create multiple isolates for a function, keep it active and communicate with it.
+  isolate_manager: ^2.2.0+2
   # Debugging and error logging.
   logging: ^1.1.1
   # Performing mDNS queries (e.g. Bonjour, Avahi).
