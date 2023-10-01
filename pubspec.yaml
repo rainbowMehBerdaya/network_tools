@@ -23,6 +23,8 @@ dependencies:
   csv: ^5.0.2
   # Multi-platform network ping utility.
   dart_ping: ^9.0.0
+  # Multi-platform network ping utility.
+  dart_ping_ios: ^4.0.1
   # Defines the annotations used by json_serializable 
   get_it: ^7.6.0
   # A composable, Future-based library for making HTTP requests.
